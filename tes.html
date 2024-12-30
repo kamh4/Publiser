@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamha Nusa Sari - Platform Pembayaran Terbaik</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffa64d;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(to right, #ff7300, #ffa64d);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .menu-left, .hamburger {
+            font-size: 24px;
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .title {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: none;
+            background-color: orange;
+            padding: 20px;
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            margin: 100px auto 20px;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .footer-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .footer-bar .button-container button {
+            padding: 7px 19px;
+            background: linear-gradient(to right, #ff7300, #ffa64d);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .footer-bar .button-container button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu-left" onclick="toggleLeftMenu()">☰</button>
+        <div class="title">Kamha</div>
+        <button class="hamburger" onclick="toggleRightMenu()">⋮</button>
+    </header>
+
+    <!-- Form Pendaftaran -->
+    <div class="container">
+        <h1>Daftar Akun</h1>
+        <form action="platform.html" method="POST">
+            <label for="name">Nama Lengkap:</label>
+            <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Masukkan email" required>
+            
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Masukkan username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+            
+            <label for="confirm-password">Konfirmasi Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Masukkan ulang password" required>
+            
+            <button type="submit">Daftar</button>
+        </form>
+        <p>Sudah punya akun? <a href="login.html">Masuk di sini</a></p>
+    </div>
+
+    <!-- Galeri Produk -->
+    <div class="container">
+        <h2>Produk Tersedia</h2>
+        <div class="gallery">
+            <div class="gallery-item"><img src="indosat.png" alt="Indosat"></div>
+            <div class="gallery-item"><img src="telkomsel.png" alt="Telkomsel"></div>
+            <div class="gallery-item"><img src="xl.png" alt="XL"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-bar">
+        <div class="user-info">
+            <span>Agen: <strong>abc123</strong></span>
+            <span>Saldo: <strong>Rp 1.000.000</strong></span>
+        </div>
+        <div class="button-container">
+            <button onclick="window.location.href='isi-saldo.html'">ISI SALDO</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleLeftMenu() {
+            alert("Menu kiri dibuka");
+        }
+
+        function toggleRightMenu() {
+            alert("Menu kanan dibuka");
+        }
+    </script>
+</body>
+</html>

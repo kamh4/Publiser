@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendaftaran Agen KNS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: orange;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: orange;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="tel"] {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pendaftaran Agen KNS</h1>
+        <form id="form-agen">
+            <label for="nama-toko">Nama Toko:</label>
+            <input type="text" id="nama-toko" name="nama_toko" placeholder="Masukkan nama toko Anda" required>
+            
+            <label for="kota-tinggal">Kota Tinggal:</label>
+            <input type="text" id="kota-tinggal" name="kota_tinggal" placeholder="Masukkan kota tinggal Anda" required>
+            
+            <label for="nomor-wa">Nomor WhatsApp:</label>
+            <input type="tel" id="nomor-wa" name="nomor_wa" placeholder="Masukkan nomor WhatsApp Anda" required>
+            
+            <button type="submit">Daftarkan Sekarang</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("form-agen").addEventListener("submit", function(event) {
+            event.preventDefault(); // Mencegah form dari reload halaman
+            
+            // Ambil nilai dari form
+            var namaToko = document.getElementById("nama-toko").value;
+            var kotaTinggal = document.getElementById("kota-tinggal").value;
+            var nomorWA = document.getElementById("nomor-wa").value;
+
+            // Membuat pesan WhatsApp yang akan dikirim
+            var pesan = `Halo, saya ingin mendaftar sebagai agen KNS:\n\nNama Toko: ${namaToko}\nKota Tinggal: ${kotaTinggal}\nNomor WA: ${nomorWA}`;
+
+            // URL WhatsApp API
+            var waURL = `https://wa.me/6285183333432?text=${encodeURIComponent(pesan)}`; // Ganti dengan nomor WhatsApp pribadi Anda (dengan kode negara)
+            
+            // Buka link WhatsApp
+            window.location.href = waURL;
+        });
+    </script>
+</body>
+</html>

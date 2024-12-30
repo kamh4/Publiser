@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran Layanan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: orange;
+    }
+    header {
+      background-color: orange;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #fa0;
+      border-radius: 8px;
+      text-align: center;
+      padding: 15px;
+      transition: box-shadow 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(225, 127, 0, 0.3);
+    }
+    .card img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border-radius: 2%;
+    }
+    .card .name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .card .price {
+      color: orange;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .card button {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .card button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pembayaran Layanan TV & Wi-Fi</h1>
+  </header>
+  <div class="container">
+    <div class="card">
+      <img src="https://via.placeholder.com/100" alt="Netflix">
+      <div class="name">Netflix</div>
+      <div class="price">IDR 150,000</div>
+      <button>Bayar</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/100" alt="Disney+">
+      <div class="name">Disney+</div>
+      <div class="price">IDR 120,000</div>
+      <button>Bayar</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/100" alt="Indihome">
+      <div class="name">Indihome Wi-Fi</div>
+      <div class="price">IDR 300,000</div>
+      <button>Bayar</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/100" alt="First Media">
+      <div class="name">First Media Wi-Fi</div>
+      <div class="price">IDR 280,000</div>
+      <button>Bayar</button>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Footer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            padding: 25px;
+            min-height: 100vh; /* Pastikan konten memenuhi tinggi layar */
+            box-sizing: border-box;
+        }
+
+        .footer-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            padding: 10px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-bar .user-info {
+            text-align: left;
+        }
+
+        .footer-bar .user-info span {
+            display: block; /* Setiap elemen berada pada baris baru */
+            color: #333;
+            font-size: 14px;
+        }
+
+        .footer-bar .user-info strong {
+            color: #000;
+        }
+
+        .footer-bar .button-container {
+            text-align: right;
+        }
+
+        .footer-bar .button-container button {
+            padding: 7px 19px;
+            background: linear-gradient(to right, #ff7300, #ffa64d);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .footer-bar .button-container button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="footer-bar">
+        <div class="user-info">
+            <span>Agen : <strong>123456789</strong></span>
+            <span>Saldo: <strong>Rp 1.000.000</strong></span>
+        </div>
+        <div class="button-container"><a href="isi-saldo.html">
+            <button>ISI SALDO</button></div>
+        </div>
+    </div>
+</body>
+</html>

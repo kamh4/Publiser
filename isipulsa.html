@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulsa</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    form { max-width: 400px; margin: auto; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    label { font-weight: bold; display: block; margin-bottom: 5px; }
+    input, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; }
+    button { background-color: #0057b8; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 1em; }
+    button:hover { background: #00449e; }
+    .back-link { display: block; margin-top: 10px; text-align: center; text-decoration: none; color: #0057b8; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Pulsa</h1>
+  <form id="payment-form">
+    <label for="phone">Nomor HP:</label>
+    <input type="text" id="phone" name="phone" placeholder="Masukkan Nomor HP" required>
+    <p id="provider-info" style="font-weight: bold; color: green;"></p>
+    
+    <label for="amount">Nominal Pulsa:</label>
+    <select id="amount" name="amount" required>
+      <option value="">Pilih Nominal Pulsa</option>
+    </select>
+    
+    <label for="payment-method">Pilih Metode Pembayaran:</label>
+    <select id="payment-method" name="payment-method" required>
+      <option value="saldo">Bayar dengan Saldo</option>
+    </select>
+    
+    <button type="submit">Bayar</button>
+    <a href="index.html" class="back-link">Nanti aja</a>
+  </form>
+
+  <script>
+    const providerData = {
+      "Telkomsel": ["0811", "0812", "0813", "0821", "0822", "0823", "0852", "0853", "0851"],
+      "Indosat": ["0814", "0815", "0816", "0855", "0856", "0857", "0858"],
+      "XL": ["0817", "0818", "0819", "0859", "0877", "0878"],
+      "Tri": ["0895", "0896", "0897", "0898", "0899"],
+      "Smartfren": ["0881", "0882", "0883", "0884", "0885", "0886", "0887", "0888", "0889"],
+      "Axis": ["0831", "0832", "0833", "0838"],
+      "By.U": ["0851"]
+    };
+
+    const pulsaPrices = [
+      1000, 2000, 3000, 4000, 5000,
+      10000, 20000, 30000, 50000, 100000
+    ];
+
+    document.querySelector("#phone").addEventListener("input", function () {
+      const phone = this.value;
+      const providerInfo = document.querySelector("#provider-info");
+      const amountSelect = document.querySelector("#amount");
+      amountSelect.innerHTML = '<option value="">Pilih Nominal Pulsa</option>'; // Reset nominal
+
+      let detectedProvider = null;
+
+      for (const provider in providerData) {
+        if (providerData[provider].some(prefix => phone.startsWith(prefix))) {
+          detectedProvider = provider;
+          break;
+        }
+      }
+
+      if (detectedProvider) {
+        providerInfo.textContent = `Provider terdeteksi: ${detectedProvider}`;
+        pulsaPrices.forEach(price => {
+          const up = price < 5000 ? 1000 : 3000;
+          const totalPrice = price + up;
+          const option = document.createElement("option");
+          option.value = totalPrice;
+          option.textContent = `Rp${price.toLocaleString()} (+Rp${up.toLocaleString()}) = Rp${totalPrice.toLocaleString()}`;
+          amountSelect.appendChild(option);
+        });
+      } else {
+        providerInfo.textContent = "Provider tidak dikenali";
+      }
+    });
+
+    document.querySelector("#payment-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const phone = document.querySelector("#phone").value;
+      const totalAmount = parseFloat(document.querySelector("#amount").value);
+      const paymentMethod = document.querySelector("#payment-method").value;
+
+      if (!phone || !totalAmount || !paymentMethod) {
+        alert("Silakan lengkapi semua informasi!");
+        return;
+      }
+
+      const confirmPayment = confirm(`Anda akan membayar pulsa senilai Rp${totalAmount} untuk nomor ${phone}. Lanjutkan?`);
+
+      if (confirmPayment) {
+        alert("Pembayaran diproses...");
+      }
+    });
+  </script>
+</body>
+</html>

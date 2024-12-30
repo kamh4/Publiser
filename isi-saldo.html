@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isi Saldo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Roboto", Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background: linear-gradient(to right, #ff7300, #ffa64d);
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form-group input[type="number"] {
+      margin-bottom: 10px;
+    }
+
+    .form-group button {
+      background-color: #ff7300;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-group button:hover {
+      background-color: #e66900;
+    }
+
+    .payment-methods {
+      margin-top: 20px;
+    }
+
+    .payment-method {
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .payment-method:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .payment-method img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Isi Saldo
+  </header>
+
+  <div class="container">
+    <h2>Masukkan Jumlah Saldo</h2>
+    <form id="saldo-form">
+      <div class="form-group">
+        <label for="amount">Jumlah Saldo</label>
+        <input type="number" id="amount" name="amount" placeholder="Masukkan jumlah saldo" required min="1000">
+      </div>
+
+      <div class="payment-methods">
+        <h3>Pilih Metode Pembayaran</h3>
+
+        <div class="payment-method" id="ewallet">
+          <img src="ewallet-logo.png" alt="eWallet" />
+          <span>eWallet</span>
+        </div>
+
+        <div class="payment-method" id="mBanking">
+          <img src="mbanking-logo.png" alt="mBanking" />
+          <span>M-Banking</span>
+        </div>
+
+        <div class="payment-method" id="qris">
+          <img src="qris-logo.png" alt="QRIS" />
+          <span>QRIS</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit">Bayar Sekarang</button>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    Kamha Nusa Sari - Platform Pembayaran Terbaik Anda
+  </footer>
+
+  <script>
+    // Handle the form submission
+    document.querySelector("#saldo-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const amount = document.querySelector("#amount").value;
+
+      if (amount && amount >= 1000) {
+        alert(`Pembayaran untuk mengisi saldo Rp${amount} berhasil. Silakan pilih metode pembayaran.`);
+      } else {
+        alert("Jumlah saldo harus lebih dari Rp1000.");
+      }
+    });
+
+    // Handle payment method selection
+    const paymentMethods = document.querySelectorAll(".payment-method");
+    paymentMethods.forEach((method) => {
+      method.addEventListener("click", () => {
+        const methodName = method.id;
+        alert(`Metode pembayaran yang dipilih: ${methodName}`);
+      });
+    });
+  </script>
+</body>
+</html>

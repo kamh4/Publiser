@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    /* Gaya umum */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: transparent;
+      color: orange;
+      padding: 20px 10px;
+    }
+
+    .header .title {
+      font-size: 0px;
+    }
+
+    /* Tombol hamburger */
+    .hamburger {
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: black;
+      cursor: pointer;
+    }
+
+    /* Menu tersembunyi */
+    .menu {
+      display: none; /* Default: tidak terlihat */
+      background-color: transparent;
+      padding: 50px;
+    }
+
+    .menu a {
+      display: block;
+      color: black;
+      text-decoration: none;
+      margin: 5px 0;
+    }
+
+    .menu a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="title"></div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</div>
+
+<!-- Menu tersembunyi -->
+<div class="menu" id="hiddenMenu">
+  <a href="#home">Beranda</a>
+  <a href="#about">Tentang</a>
+  <a href="#contact">Kontak</a>
+  <a href="#logout">Keluar</a>
+</div>
+
+<script>
+  // Fungsi untuk toggle menu
+  function toggleMenu() {
+    const menu = document.getElementById("hiddenMenu");
+    if (menu.style.display === "block") {
+      menu.style.display = "none"; // Sembunyikan menu
+    } else {
+      menu.style.display = "block"; // Tampilkan menu
+    }
+  }
+</script>
+
+</body>
+</html>

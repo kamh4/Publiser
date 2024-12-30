@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informasi Harga Layanan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: orange;
+    }
+    header {
+      background-color: orange;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .category {
+      margin-bottom: 20px;
+    }
+    .category h2 {
+      margin-bottom: 10px;
+      font-size: 22px;
+      color: #333;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .item:last-child {
+      border-bottom: none;
+    }
+    .item .name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .item .price {
+      color: #4CAF50;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Informasi Harga Layanan</h1>
+  </header>
+  <div class="container">
+    <!-- Kategori Pulsa -->
+    <div class="category">
+      <h2>Pulsa</h2>
+      <div class="item">
+        <div class="name">Telkomsel 10.000</div>
+        <div class="price">IDR 11,000</div>
+      </div>
+      <div class="item">
+        <div class="name">Indosat 20.000</div>
+        <div class="price">IDR 21,000</div>
+      </div>
+      <div class="item">
+        <div class="name">XL 50.000</div>
+        <div class="price">IDR 51,000</div>
+      </div>
+    </div>
+    <!-- Kategori TV -->
+    <div class="category">
+      <h2>TV Berlangganan</h2>
+      <div class="item">
+        <div class="name">Netflix</div>
+        <div class="price">IDR 150,000</div>
+      </div>
+      <div class="item">
+        <div class="name">Disney+</div>
+        <div class="price">IDR 120,000</div>
+      </div>
+    </div>
+    <!-- Kategori Listrik -->
+    <div class="category">
+      <h2>Listrik</h2>
+      <div class="item">
+        <div class="name">Token 20.000</div>
+        <div class="price">IDR 21,000</div>
+      </div>
+      <div class="item">
+        <div class="name">Token 50.000</div>
+        <div class="price">IDR 51,000</div>
+      </div>
+      <div class="item">
+        <div class="name">Token 100.000</div>
+        <div class="price">IDR 101,000</div>
+      </div>
+    </div>
+    <!-- Kategori Lain-Lain -->
+    <div class="category">
+      <h2>Lain-Lain</h2>
+      <div class="item">
+        <div class="name">Paket Data 10GB</div>
+        <div class="price">IDR 50,000</div>
+      </div>
+      <div class="item">
+        <div class="name">Paket Nelpon 100 Menit</div>
+        <div class="price">IDR 25,000</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Footer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            padding: 25px;
+            min-height: 100vh; /* Pastikan konten memenuhi tinggi layar */
+            box-sizing: border-box;
+        }
+
+        .footer-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            padding: 10px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-bar .user-info {
+            text-align: left;
+        }
+
+        .footer-bar .user-info span {
+            display: block; /* Setiap elemen berada pada baris baru */
+            color: #333;
+            font-size: 14px;
+        }
+
+        .footer-bar .user-info strong {
+            color: #000;
+        }
+
+        .footer-bar .button-container {
+            text-align: right;
+        }
+
+        .footer-bar .button-container button {
+            padding: 7px 19px;
+            background: linear-gradient(to right, #ff7300, #ffa64d);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .footer-bar .button-container button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="footer-bar">
+        <div class="user-info">
+            <span>Agen : <strong>123456789</strong></span>
+            <span>Saldo: <strong>Rp 1.000.000</strong></span>
+        </div>
+        <div class="button-container"><a href="isi-saldo.html">
+            <button>ISI SALDO</button></div>
+        </div>
+    </div>
+</body>
+</html>

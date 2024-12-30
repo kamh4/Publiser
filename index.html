@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kamha Nusa Sari - Platform pembayaran terbaik Anda</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Roboto", Arial, sans-serif;
+    }
+
+    header {
+      background: linear-gradient(to right, #ff7300, #ffa64d);
+      color: white;
+      text-align: center;
+      padding: 6px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 95px;
+      position: fixed; 
+    }
+
+    .menu-left, .hamburger {
+      font-size: 24px;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .title {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+
+    .menu {
+      display: none;
+      background-color: orange;
+      padding: 30px;
+      position: fixed;
+      top: 100px;
+      border-radius: 8px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu a {
+      display: block;
+      color: black;
+      text-decoration: none;
+      margin: 10px 0;
+    }
+
+    .menu a:hover {
+      text-decoration: underline;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 21px;
+      background-color: linear-gradient(to right, #ff7300, #ffa64d);
+      position: fixed;
+      bottom: 620;
+    }
+
+    nav a {
+      text-decoration: none;
+      padding: 8px 9px;
+      background:linear-gradient(to right, #ff7300, #ffa64d);
+      color: white;
+      font-size: 1em;
+      border-radius: 4px;
+      box-shadow: 0 15px 6px rgba(255, 165, 77, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #ff7300;
+    }
+
+    .container {
+      padding-top: 120px;
+      text-align: center;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+      gap: 10px;
+      scale: 0.5px;
+    }
+
+    .gallery-item {
+      background: transparent
+      padding: 9px;
+      border-radius: 7px;
+      box-shadow: 0 5px 10px rgba(227, 127, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .gallery-item img {
+    	background: transparent
+      width: 60%;
+      height: 60;
+      border-radius: 8px;
+      margin-bottom: 4px;
+      align: center;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-item a {
+      text-decoration: none;
+      color: orange;
+      font-weight: bold;
+      font-size: 0.7em;
+    }
+
+    /* NEW: Style for the orange background on the titles */
+    .section-title {
+      background-color: #ff7300;
+      color: white;
+      font-size: 1.5em; /* Slightly bigger than regular headings */
+      padding: 10px 10px;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px rgba(227, 127, 0, 0.1);
+      
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    footer {
+      background-color: transparent;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="menu-left" onclick="toggleLeftMenu()">⋮</button>
+    <div class="title">Kamha</div>
+    <button class="hamburger" onclick="toggleRightMenu()">☰</button>
+  </header>
+
+  <div class="menu" id="leftMenu">
+    <a href="setting.html">Pengaturan</a>
+    <a href="index.html">Kembali</a>
+    <a href="splash.html">Logout</a>
+  </div>
+
+  <div class="menu" id="rightMenu">
+    <a href="userroom.html">Profil</a>
+    <a href="daftar-agen.html">Daftarkan Agen</a>
+    <a href="privacypolicy.html">Privacy Policy</a>
+    <a href="splash.html">Keluar</a>
+  </div>
+
+  <nav>
+    <a href="pulsa.html" target="_blank">PULSA</a>
+    <a href="tagihan.html" target="_blank">TAGIHAN</a>
+    <a href="riwayat.html" target="_blank">RIWAYAT</a>
+    <a href="informasi.html">INFO</a>
+  </nav>
+
+  <div class="container">
+    <!-- New Section Title with Orange Background -->
+    <div class="section-title">SELULER</div>
+    <div class="gallery">
+      <div class="gallery-item">
+      	<a href="isipulsa.html">
+        <img src="indosat.png" alt="Indosat">
+        </a>
+      </div>
+      <a href="isipulsa.html">
+      <div class="gallery-item">
+        <img src="telkomsel.png" alt="Telkomsel">
+      </div></a>
+      <a href="isipulsa.html">
+      <div class="gallery-item">
+        <img src="xl.png" alt="XL">
+      </div></a>
+      <a href="isipulsa.html">
+      <div class="gallery-item">
+        <img src="3.png" alt="Three">
+      </div> </a>
+     <a href="isipulsa.html">
+      <div class="gallery-item">
+        <img src="axis.png" alt="Axis">
+      </div></a>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- New Section Title with Orange Background -->
+    <div class="section-title">LISTRIK</div>
+    <div class="gallery">
+      <div class="gallery-item">
+      	<a href="pulsa.html">
+        <img src="listrik2.png" alt="Pulsa Elektrik">
+        Prabayar</a>
+      </div>
+      <div class="gallery-item">
+      	<a href="tagihanlistrik.html">
+        <img src="listrik.png" alt="Token Listrik">
+        Tagihan</a>
+      </div>
+      <div class="gallery-item">
+        
+        
+      </div>
+      <div class="gallery-item">
+        
+        
+      </div>
+    </div>
+  </div>
+      
+  <div class="container">
+    <!-- New Section Title with Orange Background -->
+    <div class="section-title">E-WALLET</div>
+    <div class="gallery">
+      <div class="gallery-item">
+      	<a href="dana.html">
+        <img src="dana.png" alt="dana">
+        </a>
+      </div>
+      <div class="gallery-item">
+      	<a href="ovo.html">
+        <img src="ovo.png" alt="Ovo">
+        </a>
+      </div>
+      <div class="gallery-item">
+      	<a href="ewallet.html">
+        <img src="linkaja.png" alt="Isi Saldo e-Wallet">
+        </a>
+      </div>
+      <div class="gallery-item">
+      	<a href="topupgame.html">
+        <img src="gopay.png" alt="gopay">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p></p>
+  </footer>
+
+  <script>
+    function toggleLeftMenu() {
+      const menu = document.getElementById('leftMenu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleRightMenu() {
+      const menu = document.getElementById('rightMenu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Footer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            padding: 25px;
+            min-height: 100vh; /* Pastikan konten memenuhi tinggi layar */
+            box-sizing: border-box;
+        }
+
+        .footer-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            padding: 10px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-bar .user-info {
+            text-align: left;
+        }
+
+        .footer-bar .user-info span {
+            display: block; /* Setiap elemen berada pada baris baru */
+            color: #333;
+            font-size: 14px;
+        }
+
+        .footer-bar .user-info strong {
+            color: #000;
+        }
+
+        .footer-bar .button-container {
+            text-align: right;
+        }
+
+        .footer-bar .button-container button {
+            padding: 7px 19px;
+            background: linear-gradient(to right, #ff7300, #ffa64d);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .footer-bar .button-container button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="footer-bar">
+        <div class="user-info">
+            <span>Agen : <strong>abc123</strong></span>
+            <span>Saldo: <strong>Rp 1.00.000p</strong></span>
+        </div>
+        <div class="button-container"><a href="isi-saldo.html">
+            <button>ISI SALDO</button></div>
+        </div>
+    </div>
+</body>
+</html>

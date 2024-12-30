@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembelian Token Listrik</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: orange; color: #333; }
+    form { max-width: 400px; margin: auto; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    label { font-weight: bold; display: block; margin-bottom: 5px; }
+    input, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; }
+    button { background-color: #0057b8; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 1em; }
+    button:hover { background: #00449e; }
+    .back-link { display: block; margin-top: 10px; text-align: center; text-decoration: none; color: #0057b8; font-weight: bold; }
+    #customer-info { font-weight: bold; color: green; }
+  </style>
+</head>
+<body>
+  <h1>Pembelian Token Listrik</h1>
+  <form id="token-form">
+    <label for="customer-number">Nomor Pelanggan:</label>
+    <input type="text" id="customer-number" name="customer-number" placeholder="Masukkan Nomor Pelanggan" required>
+    <p id="customer-info"></p>
+    
+    <label for="amount">Nominal Token:</label>
+    <select id="amount" name="amount" required>
+      <option value="">Pilih Nominal Token</option>
+    </select>
+    
+    <label for="payment-method">Pilih Metode Pembayaran:</label>
+    <select id="payment-method" name="payment-method" required>
+      <option value="saldo">Bayar dengan Saldo</option>
+      <option value="ewallet">Bayar dengan E-Wallet (OVO, DANA, GoPay)</option>
+      <option value="mbanking">Bayar dengan M-Banking</option>
+      <option value="qris">Bayar dengan QRIS</option>
+      <option value="kartu-kredit">Bayar dengan Kartu Kredit</option>
+      <option value="transfer-bank">Bayar dengan Transfer Bank</option>
+    </select>
+    
+    <button type="submit">Beli Token</button>
+    <a href="index.html" class="back-link">Kembali</a>
+  </form>
+
+  <script>
+    const tokenPrices = [20000, 50000, 100000, 200000, 500000, 1000000];
+
+    document.querySelector("#customer-number").addEventListener("input", function () {
+      const customerNumber = this.value;
+      const customerInfo = document.querySelector("#customer-info");
+      const amountSelect = document.querySelector("#amount");
+
+      amountSelect.innerHTML = '<option value="">Pilih Nominal Token</option>'; // Reset pilihan harga
+
+      if (customerNumber.length >= 6) { // Validasi dasar nomor pelanggan
+        customerInfo.textContent = `Nomor pelanggan valid: ${customerNumber}`;
+        
+        // Tambahkan daftar harga
+        tokenPrices.forEach(price => {
+          const adminFee = 5000; // Biaya admin tetap
+          const totalPrice = price + adminFee;
+          const option = document.createElement("option");
+          option.value = totalPrice;
+          option.textContent = `Rp${price.toLocaleString()} (+Rp${adminFee.toLocaleString()} admin) = Rp${totalPrice.toLocaleString()}`;
+          amountSelect.appendChild(option);
+        });
+      } else {
+        customerInfo.textContent = "Masukkan nomor pelanggan yang valid.";
+      }
+    });
+
+    document.querySelector("#token-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const customerNumber = document.querySelector("#customer-number").value;
+      const totalAmount = parseFloat(document.querySelector("#amount").value);
+      const paymentMethod = document.querySelector("#payment-method").value;
+
+      if (!customerNumber || !totalAmount || !paymentMethod) {
+        alert("Silakan lengkapi semua informasi!");
+        return;
+      }
+
+      const confirmPurchase = confirm(`Anda akan membeli token listrik senilai Rp${totalAmount} untuk nomor pelanggan ${customerNumber}. Lanjutkan?`);
+
+      if (confirmPurchase) {
+        alert("Pembelian diproses...");
+      }
+    });
+  </script>
+</body>
+</html>

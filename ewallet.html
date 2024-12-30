@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran E-Wallet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background: linear-gradient(to right, #ff7300, #ffa64d);
+      color: white;
+      padding: 20px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .wallet-menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    .wallet-item {
+      background: linear-gradient(to bottom right, #ffffff, #ffffd0);
+      border: 2px solid #0057b8;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .wallet-item:hover {
+      background: linear-gradient(to bottom right, #ffffff, #d4edda);
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .wallet-item h2 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #0057b8;
+    }
+
+    .wallet-item p {
+      margin: 10px 0 0;
+      font-size: 0.9em;
+      color: #ff7300;
+    }
+
+    #payment-form {
+      display: none;
+      background: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    label, select, input, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #0057b8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00449e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pembayaran E-Wallet</h1>
+    <p>Silakan pilih e-wallet dan masukkan detail pembayaran</p>
+  </header>
+
+  <main>
+    <div class="wallet-menu">
+      <div class="wallet-item" onclick="selectWallet('GoPay')">
+        <h2>GoPay</h2>
+        <p>Dompet digital milik Gojek.</p>
+      </div>
+      <div class="wallet-item" onclick="selectWallet('OVO')">
+        <h2>OVO</h2>
+        <p>E-wallet dengan fitur lengkap.</p>
+      </div>
+      <div class="wallet-item" onclick="selectWallet('DANA')">
+        <h2>DANA</h2>
+        <p>Pembayaran digital yang praktis.</p>
+      </div>
+    </div>
+
+    <form id="payment-form">
+      <h2 id="selected-wallet"></h2>
+      <label for="customer-number">Nomor Pelanggan:</label>
+      <input type="text" id="customer-number" placeholder="Masukkan nomor pelanggan" required>
+      
+      <label for="amount">Pilih Nominal:</label>
+      <select id="amount" name="amount" required>
+        <option value="">Pilih Nominal</option>
+        <option value="10000">Rp10.000</option>
+        <option value="20000">Rp20.000</option>
+        <option value="50000">Rp50.000</option>
+        <option value="100000">Rp100.000</option>
+        <option value="500000">Rp500.000</option>
+        <option value="1000000">Rp1.000.000</option>
+      </select>
+
+      <button type="submit">Bayar</button>
+    </form>
+  </main>
+
+  <script>
+    function selectWallet(walletName) {
+      document.getElementById('selected-wallet').textContent = `Metode Pembayaran: ${walletName}`;
+      document.getElementById('payment-form').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('payment-form').offsetTop, behavior: 'smooth' });
+    }
+
+    document.getElementById('payment-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const customerNumber = document.getElementById('customer-number').value;
+      const amount = document.getElementById('amount').value;
+
+      if (!customerNumber || !amount) {
+        alert('Silakan lengkapi semua data!');
+        return;
+      }
+
+      alert(`Pembayaran sebesar Rp${parseInt(amount).toLocaleString()} untuk nomor pelanggan ${customerNumber} diproses melalui Saldo.`);
+    });
+  </script>
+</body>
+</html>
