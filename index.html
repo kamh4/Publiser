@@ -71,7 +71,7 @@
     nav a {
       text-decoration: none;
       padding: 8px 9px;
-      background:linear-gradient(to right, #ff7300, #ffa64d);
+      background: linear-gradient(to right, #ff7300, #ffa64d);
       color: white;
       font-size: 1em;
       border-radius: 4px;
@@ -90,27 +90,22 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
-      gap: 10px;
-      scale: 0.5px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+      gap: 20px;
+      padding: 10px;
     }
 
     .gallery-item {
-      background: transparent
-      padding: 9px;
-      border-radius: 7px;
-      box-shadow: 0 5px 10px rgba(227, 127, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .gallery-item img {
-    	background: transparent
-      width: 60%;
-      height: 60;
+      width: 100%; /* Ensure proportional scaling */
+      height: auto; /* Maintain aspect ratio */
       border-radius: 8px;
-      margin-bottom: 4px;
-      align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      object-fit: contain; /* Prevent cropping */
     }
 
     .gallery-item:hover {
@@ -118,22 +113,13 @@
       box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     }
 
-    .gallery-item a {
-      text-decoration: none;
-      color: orange;
-      font-weight: bold;
-      font-size: 0.7em;
-    }
-
-    /* NEW: Style for the orange background on the titles */
     .section-title {
       background-color: #ff7300;
       color: white;
-      font-size: 1.5em; /* Slightly bigger than regular headings */
+      font-size: 1.5em;
       padding: 10px 10px;
       border-radius: 5px;
       box-shadow: 0 5px 10px rgba(227, 127, 0, 0.1);
-      
       margin-bottom: 20px;
       display: inline-block;
     }
@@ -174,80 +160,75 @@
   </nav>
 
   <div class="container">
-    <!-- New Section Title with Orange Background -->
     <div class="section-title">SELULER</div>
     <div class="gallery">
       <div class="gallery-item">
-      	<a href="isipulsa.html">
-        <img src="indosat.png" alt="Indosat">
+        <a href="isipulsa.html">
+          <img src="indosat.png" alt="Indosat">
         </a>
       </div>
-      <a href="isipulsa.html">
       <div class="gallery-item">
-        <img src="telkomsel.png" alt="Telkomsel">
-      </div></a>
-      <a href="isipulsa.html">
+        <a href="isipulsa.html">
+          <img src="telkomsel.png" alt="Telkomsel">
+        </a>
+      </div>
       <div class="gallery-item">
-        <img src="xl.png" alt="XL">
-      </div></a>
-      <a href="isipulsa.html">
+        <a href="isipulsa.html">
+          <img src="xl.png" alt="XL">
+        </a>
+      </div>
       <div class="gallery-item">
-        <img src="3.png" alt="Three">
-      </div> </a>
-     <a href="isipulsa.html">
+        <a href="isipulsa.html">
+          <img src="3.png" alt="Three">
+        </a>
+      </div>
       <div class="gallery-item">
-        <img src="axis.png" alt="Axis">
-      </div></a>
+        <a href="isipulsa.html">
+          <img src="axis.png" alt="Axis">
+        </a>
+      </div>
     </div>
   </div>
 
   <div class="container">
-    <!-- New Section Title with Orange Background -->
     <div class="section-title">LISTRIK</div>
     <div class="gallery">
       <div class="gallery-item">
-      	<a href="pulsa.html">
-        <img src="listrik2.png" alt="Pulsa Elektrik">
-        Prabayar</a>
+        <a href="pulsa.html">
+          <img src="listrik2.png" alt="Pulsa Elektrik">
+          <p>Prabayar</p>
+        </a>
       </div>
       <div class="gallery-item">
-      	<a href="tagihanlistrik.html">
-        <img src="listrik.png" alt="Token Listrik">
-        Tagihan</a>
-      </div>
-      <div class="gallery-item">
-        
-        
-      </div>
-      <div class="gallery-item">
-        
-        
+        <a href="tagihanlistrik.html">
+          <img src="listrik.png" alt="Token Listrik">
+          <p>Tagihan</p>
+        </a>
       </div>
     </div>
   </div>
-      
+
   <div class="container">
-    <!-- New Section Title with Orange Background -->
     <div class="section-title">E-WALLET</div>
     <div class="gallery">
       <div class="gallery-item">
-      	<a href="dana.html">
-        <img src="dana.png" alt="dana">
+        <a href="dana.html">
+          <img src="dana.png" alt="Dana">
         </a>
       </div>
       <div class="gallery-item">
-      	<a href="ovo.html">
-        <img src="ovo.png" alt="Ovo">
+        <a href="ovo.html">
+          <img src="ovo.png" alt="Ovo">
         </a>
       </div>
       <div class="gallery-item">
-      	<a href="ewallet.html">
-        <img src="linkaja.png" alt="Isi Saldo e-Wallet">
+        <a href="ewallet.html">
+          <img src="linkaja.png" alt="LinkAja">
         </a>
       </div>
       <div class="gallery-item">
-      	<a href="topupgame.html">
-        <img src="gopay.png" alt="gopay">
+        <a href="topupgame.html">
+          <img src="gopay.png" alt="Gopay">
         </a>
       </div>
     </div>
@@ -268,88 +249,5 @@
       menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
   </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticky Footer</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .content {
-            padding: 25px;
-            min-height: 100vh; /* Pastikan konten memenuhi tinggi layar */
-            box-sizing: border-box;
-        }
-
-        .footer-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #f8f9fa;
-            border-top: 1px solid #ddd;
-            padding: 10px 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer-bar .user-info {
-            text-align: left;
-        }
-
-        .footer-bar .user-info span {
-            display: block; /* Setiap elemen berada pada baris baru */
-            color: #333;
-            font-size: 14px;
-        }
-
-        .footer-bar .user-info strong {
-            color: #000;
-        }
-
-        .footer-bar .button-container {
-            text-align: right;
-        }
-
-        .footer-bar .button-container button {
-            padding: 7px 19px;
-            background: linear-gradient(to right, #ff7300, #ffa64d);
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .footer-bar .button-container button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-    </style>
-</head>
-<body>
-    <div class="footer-bar">
-        <div class="user-info">
-            <span>Agen : <strong>abc123</strong></span>
-            <span>Saldo: <strong>Rp 1.00.000p</strong></span>
-        </div>
-        <div class="button-container"><a href="isi-saldo.html">
-            <button>ISI SALDO</button></div>
-        </div>
-    </div>
 </body>
 </html>
