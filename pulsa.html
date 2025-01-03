@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulsa</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    form { max-width: 400px; margin: auto; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    label { font-weight: bold; display: block; margin-bottom: 5px; }
+    input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; }
+    select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; }
+    button { background-color: #0057b8; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 1em; }
+    button:hover { background: #00449e; }
+    .back-link { display: block; margin-top: 10px; text-align: center; text-decoration: none; color: #0057b8; font-weight: bold; }
+    .payment-methods { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Pulsa</h1>
+  <form id="payment-form">
+    <label for="phone">Nomor HP:</label>
+    <input type="text" id="phone" name="phone" placeholder="Masukkan Nomor HP" required>
+    
+    <label for="amount">Nominal Pulsa:</label>
+    <input type="number" id="amount" name="amount" placeholder="Masukkan Nominal Pulsa" required>
+    
+    <label for="payment-method">Pilih Metode Pembayaran:</label>
+    <select id="payment-method" name="payment-method" required>
+      <option value="saldo">Bayar dengan Saldo</option>
+      <option value="ewallet">Bayar dengan E-Wallet (OVO, DANA, GoPay)</option>
+      <option value="mbanking">Bayar dengan M-Banking</option>
+      <option value="qris">Bayar dengan QRIS</option>
+    </select>
+    
+    <button type="submit">Bayar</button>
+    <a href="index.html" class="back-link">Nanti aja</a>
+  </form>
+
+  <script>
+    document.querySelector("#payment-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const phone = document.querySelector("#phone").value;
+      let amount = parseFloat(document.querySelector("#amount").value);
+      const paymentMethod = document.querySelector("#payment-method").value;
+
+      // Validasi input
+      if (!phone || amount <= 0) {
+        alert("Nomor HP atau nominal pulsa tidak valid!");
+        return;
+      }
+
+      // Tambahkan biaya pulsa (Rp3000)
+      const totalAmount = amount + 3000;
+
+      // Tampilkan konfirmasi pembayaran dengan total harga
+      const confirmPayment = confirm(`Anda akan membayar pulsa senilai Rp${totalAmount} untuk nomor ${phone}. Lanjutkan?`);
+
+      if (confirmPayment) {
+        // Arahkan ke pembayaran sesuai metode
+        let paymentMessage = `Pembayaran pulsa:\nNomor HP: ${phone}\nNominal: Rp${amount}\nBiaya: Rp3000\nTotal: Rp${totalAmount}\n\nMetode Pembayaran: ${paymentMethod}`;
+
+        // Misalnya, setelah memilih metode pembayaran, akan mengarahkan pengguna ke halaman pembayaran sesuai pilihan.
+        if (paymentMethod === "saldo") {
+          // Tambahkan logika untuk pembayaran dengan saldo
+          alert("Pembayaran dengan Saldo diproses...");
+        } else if (paymentMethod === "ewallet") {
+          // Tambahkan logika untuk pembayaran dengan E-Wallet
+          alert("Pembayaran dengan E-Wallet diproses...");
+        } else if (paymentMethod === "mbanking") {
+          // Tambahkan logika untuk pembayaran dengan M-Banking
+          alert("Pembayaran dengan M-Banking diproses...");
+        } else if (paymentMethod === "qris") {
+          // Tambahkan logika untuk pembayaran dengan QRIS
+          alert("Pembayaran dengan QRIS diproses...");
+        }
+
+        // Setelah pembayaran selesai, kirim pesan ke WhatsApp
+        const waNumber = "6285183333432"; // Ganti dengan nomor WhatsApp pusat
+        const waLink = `https://wa.me/${6285183333432}?text=${encodeURIComponent(paymentMessage)}`;
+
+        // Arahkan ke WhatsApp
+        window.open(waLink, "_blank");
+
+        // Notifikasi selesai
+        alert("Pesanan pulsa berhasil dibuat dan dikirim ke WhatsApp!");
+      }
+    });
+  </script>
+</body>
+</html>
