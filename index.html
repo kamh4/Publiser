@@ -3,335 +3,234 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kamha Nusa Sari - Platform pembayaran terbaik Anda</title>
+  <title>Kamha</title>
   <style>
     body {
       margin: 0;
-      font-family: "Roboto", Arial, sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
-      background: linear-gradient(to right, #ff7300, #ffa64d);
+      background-color: orange;
       color: white;
-      text-align: center;
-      padding: 6px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 95px;
-      position: fixed; 
+      padding: 10px 15px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
-    .menu-left, .hamburger {
-      font-size: 24px;
-      background: transparent;
-      border: none;
-      color: white;
-      cursor: pointer;
-    }
-
-    .title {
-      flex-grow: 1;
-      text-align: center;
-      font-size: 2.5em;
+    header .title {
+      font-size: 18px;
       font-weight: bold;
     }
 
     .menu {
       display: none;
-      background-color: orange;
-      padding: 30px;
-      position: fixed;
-      top: 100px;
-      border-radius: 8px;
-      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 100%;
+      right: 15px;
+      background-color: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      z-index: 1000;
+      overflow: hidden;
     }
 
     .menu a {
       display: block;
-      color: black;
+      padding: 10px;
       text-decoration: none;
-      margin: 10px 0;
+      color: #333;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
     }
 
     .menu a:hover {
-      text-decoration: underline;
+      background-color: #f3f3f3;
     }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      padding: 25px;
-      background-color: linear-gradient(to right, #ff7300, #ffa64d);
-      position: fixed;
-      bottom: 595;
+    .menu a:last-child {
+      border-bottom: none;
     }
 
-    nav a {
-      text-decoration: none;
-      padding: 8px 9px;
-      background: linear-gradient(to right, #ff7300, #ffa64d);
+    .menu-button {
+      font-size: 20px;
+      background: none;
+      border: none;
       color: white;
-      font-size: 1em;
-      border-radius: 4px;
-      box-shadow: 0 15px 6px rgba(255, 165, 77, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    nav a:hover {
-      background: #ff7300;
+      cursor: pointer;
     }
 
     .container {
-      padding-top: 120px;
-      text-align: center;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
-      gap: 20px;
-      padding: 10px;
-    }
-
-    .gallery-item {
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    
-    .gallery-item img {
-  width: 160px; /* Atur ukuran lebar gambar */
-  height: 140px; /* Atur ukuran tinggi gambar */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  object-fit: cover; /* Agar gambar pas di dalam ukuran yang ditentukan */
-}
-
-    .gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      flex-grow: 1;
+      padding: 15px;
     }
 
     .section-title {
-      background-color: #ff7300;
-      color: white;
-      font-size: 1.5em;
-      padding: 10px 10px;
-      border-radius: 5px;
-      box-shadow: 0 5px 10px rgba(227, 127, 0, 0.1);
-      margin-bottom: 20px;
-      display: inline-block;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px 0 10px;
+      color: orange;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: orange;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+    }
+
+    .grid-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px rgba(225, 127, 0, 0.1);
+    }
+
+    .grid-item img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
     }
 
     footer {
-      background-color: transparent;
-      padding: 20px;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      background-color: white;
+      padding: 10px 0;
+      box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: max-content;
+    }
+
+    .footer-nav a {
+      text-decoration: none;
+      color: orange;
+      font-size: 14px;
       text-align: center;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      margin: 0 10px;
+      white-space: nowrap;
     }
   </style>
 </head>
 <body>
   <header>
-    <button class="menu-left" onclick="toggleLeftMenu()">⋮</button>
-    <div class="title">Kamha</div>
-    <button class="hamburger" onclick="toggleRightMenu()">☰</button>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <div class="title">KAMHA</div>
+    <div class="menu" id="menu">
+      <a href="userroom.html">Profil</a>
+      <a href="daftar-agen.html">Daftarkan Agen</a>
+      <a href="splash.html">Logout</a>
+    </div>
   </header>
 
-  <div class="menu" id="leftMenu">
-    <a href="setting.html">Pengaturan</a>
-    <a href="index.html">Kembali</a>
-    <a href="splash.html">Logout</a>
-  </div>
-
-  <div class="menu" id="rightMenu">
-    <a href="userroom.html">Profil</a>
-    <a href="daftar-agen.html">Daftarkan Agen</a>
-    <a href="privacypolicy.html">Privacy Policy</a>
-    <a href="splash.html">Keluar</a>
-  </div>
-
-  <nav>
-    <a href="pulsa.html" target="_blank">PULSA</a>
-    <a href="tagihan.html" target="_blank">TAGIHAN</a>
-    <a href="riwayat.html" target="_blank">RIWAYAT</a>
-    <a href="informasi.html">INFO</a>
-  </nav>
-
   <div class="container">
-    <div class="section-title">SELULER</div>
-    <div class="gallery">
-      <div class="gallery-item">
-        <a href="isipulsa.html">
-          <img src="indosat.png" alt="Indosat">
-        </a>
+    <div class="section-title">Pulsa</div>
+    <div class="grid">
+      <div class="grid-item">
+      	<a href="pulsa.html">
+        <img src="pulsa.png" alt="Pulsa Regular">
+        <p>Pulsa Regular</p></a>
       </div>
-      <div class="gallery-item">
-        <a href="isipulsa.html">
-          <img src="telkomsel.png" alt="Telkomsel">
-        </a>
+      <div class="grid-item">
+      	<a href="pulsa.html">
+        <img src="pulsatf.png" alt="Pulsa Transfer">
+        <p>Pulsa Transfer</p></a>
       </div>
-      <div class="gallery-item">
-        <a href="isipulsa.html">
-          <img src="xl.png" alt="XL">
-        </a>
-      </div>
-      <div class="gallery-item">
-        <a href="isipulsa.html">
-          <img src="3.png" alt="Three">
-        </a>
-      </div>
-      <div class="gallery-item">
-        <a href="isipulsa.html">
-          <img src="axis.png" alt="Axis">
-        </a>
+      <div class="grid-item">
+      	<a href="internet.html">
+        <img src="internet.png" alt="Paket Internet">
+        <p>Paket Internet</p></a>
       </div>
     </div>
-  </div>
 
-  <div class="container">
-    <div class="section-title">LISTRIK</div>
-    <div class="gallery">
-      <div class="gallery-item">
-        <a href="pulsa.html">
-          <img src="listrik2.png" alt="Pulsa Elektrik">
-          <p>Prabayar</p>
-        </a>
+    <div class="section-title">Tagihan</div>
+    <div class="grid">
+      <div class="grid-item">
+      	<a href="listrik.html">
+        <img src="listrik.png" alt="Token Listrik">
+        <p>Token Listrik</p></a>
       </div>
-      <div class="gallery-item">
-        <a href="tagihanlistrik.html">
-          <img src="listrik.png" alt="Token Listrik">
-          <p>Tagihan</p>
-        </a>
+      <div class="grid-item">
+      	<a href="tagihanlistrik.html">
+        <img src="listrik.png" alt="Bayar Tagihan">
+        <p>Bayar Tagihan</p></a>
       </div>
     </div>
-  </div>
 
-  <div class="container">
-    <div class="section-title">E-WALLET</div>
-    <div class="gallery">
-      <div class="gallery-item">
-        <a href="dana.html">
-          <img src="dana.png" alt="Dana">
-        </a>
+    <div class="section-title">E-Wallet</div>
+    <div class="grid">
+      <div class="grid-item">
+      	<a href="dana.html">
+        <img src="dana.png" alt="Dana">
+        <p>Dana</p></a>
       </div>
-      <div class="gallery-item">
-        <a href="ovo.html">
-          <img src="OVO.png" alt="Ovo">
-        </a>
+      <div class="grid-item">
+      	<a href="ovo.html">
+        <img src="ovo.png" alt="Ovo">
+        <p>Ovo</p></a>
       </div>
-      <div class="gallery-item">
-        <a href="ewallet.html">
-          <img src="linkaja.png" alt="LinkAja">
-        </a>
-      </div>
-      <div class="gallery-item">
-        <a href="topupgame.html">
-          <img src="gopay.png" alt="Gopay">
-        </a>
+      <div class="grid-item">
+      	<a href="gopay.html">
+        <img src="gopay.png" alt="Gopay">
+        <p>Gopay</p></a>
       </div>
     </div>
   </div>
 
   <footer>
-    <p></p>
+    <div class="footer-nav">
+      <a href="pulsa.html">Pulsa</a>
+      <a href="tagihan.html">Tagihan</a>
+      <a href="riwayat.html">Riwayat</a>
+      <a href="informasi.html">Info</a>
+      <a href="#">Promo</a>
+      <a href="#">Help</a>
+    </div>
   </footer>
 
   <script>
-    function toggleLeftMenu() {
-      const menu = document.getElementById('leftMenu');
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
       menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
 
-    function toggleRightMenu() {
-      const menu = document.getElementById('rightMenu');
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-    }
+    // Tutup menu jika klik di luar area menu
+    document.addEventListener('click', function (e) {
+      const menu = document.getElementById('menu');
+      const button = document.querySelector('.menu-button');
+      if (!menu.contains(e.target) && e.target !== button) {
+        menu.style.display = 'none';
+      }
+    });
   </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticky Footer</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .content {
-            padding: 25px;
-            min-height: 100vh; /* Pastikan konten memenuhi tinggi layar */
-            box-sizing: border-box;
-        }
-
-        .footer-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #f8f9fa;
-            border-top: 1px solid #ddd;
-            padding: 10px 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer-bar .user-info {
-            text-align: left;
-        }
-
-        .footer-bar .user-info span {
-            display: block; /* Setiap elemen berada pada baris baru */
-            color: #333;
-            font-size: 14px;
-        }
-
-        .footer-bar .user-info strong {
-            color: #000;
-        }
-
-        .footer-bar .button-container {
-            text-align: right;
-        }
-
-        .footer-bar .button-container button {
-            padding: 7px 19px;
-            background: linear-gradient(to right, #ff7300, #ffa64d);
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .footer-bar .button-container button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-    </style>
-</head>
-<body>
-    <div class="footer-bar">
-        <div class="user-info">
-            <span>Agen : <strong>123456789</strong></span>
-            <span>Saldo: <strong>Rp 1.000.000</strong></span>
-        </div>
-        <div class="button-container"><a href="isi-saldo.html">
-            <button>ISI SALDO</button></div>
-        </div>
-    </div>
 </body>
 </html>

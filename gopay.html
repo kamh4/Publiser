@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran GoPay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pembayaran GoPay</h2>
+        <label for="phone">Masukkan Nomor GoPay:</label><br>
+        <input type="text" id="phone" placeholder="08xxxxxxxxxx" style="width: 100%; padding: 10px; margin-top: 5px;" oninput="tampilkanNominal()"><br><br>
+        <div id="nominalInfo" class="hidden">
+            <label for="nominals">Pilih Nominal:</label><br>
+            <select id="nominals" style="width: 100%; padding: 10px; margin-top: 5px;">
+                <option value="" disabled selected>Pilih Nominal</option>
+            </select><br><br>
+            <button class="btn" onclick="konfirmasiPembayaran()">Bayar</button>
+        </div>
+    </div>
+
+    <script>
+        const nominalOptions = [
+            "Rp10.000",
+            "Rp20.000",
+            "Rp50.000",
+            "Rp100.000",
+            "Rp200.000",
+            "Rp500.000"
+        ];
+
+        function tampilkanNominal() {
+            const phone = document.getElementById("phone").value;
+
+            // Validasi minimal panjang nomor
+            if (phone.length < 10) {
+                document.getElementById("nominalInfo").classList.add("hidden");
+                return;
+            }
+
+            const nominalSelect = document.getElementById("nominals");
+            nominalSelect.innerHTML = `<option value="" disabled selected>Pilih Nominal</option>`;
+
+            nominalOptions.forEach((nominal) => {
+                const option = document.createElement("option");
+                option.value = nominal;
+                option.textContent = nominal;
+                nominalSelect.appendChild(option);
+            });
+
+            document.getElementById("nominalInfo").classList.remove("hidden");
+        }
+
+        function konfirmasiPembayaran() {
+            const selectedNominal = document.getElementById("nominals").value;
+            if (!selectedNominal) {
+                alert("Silakan pilih nominal terlebih dahulu!");
+                return;
+            }
+            alert(`Pembayaran GoPay sebesar ${selectedNominal} berhasil!`);
+        }
+    </script>
+</body>
+</html>

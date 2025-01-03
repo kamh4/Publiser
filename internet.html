@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelian Paket Internet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .btn {
+            background-color: orange;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: orange;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pembelian Paket Internet</h2>
+        <label for="phone">Masukkan Nomor Telepon:</label><br>
+        <input type="text" id="phone" placeholder="08xxxxxxxxxx" style="width: 100%; padding: 10px; margin-top: 5px;" oninput="deteksiProvider()"><br><br>
+        <div id="providerInfo" class="hidden">
+            <h3 id="providerName"></h3>
+            <label for="packages">Pilih Paket:</label><br>
+            <select id="packages" style="width: 100%; padding: 10px; margin-top: 5px;">
+                <option value="" disabled selected>Pilih Paket</option>
+            </select><br><br>
+            <button class="btn" onclick="beliPaket()">Beli Paket</button>
+        </div>
+    </div>
+
+    <script>
+        const paketData = {
+            "Telkomsel": ["Paket 5GB - Rp50.000", "Paket 10GB - Rp90.000", "Paket 20GB - Rp150.000"],
+            "Indosat": ["Paket 5GB - Rp40.000", "Paket 10GB - Rp80.000", "Paket 20GB - Rp140.000"],
+            "XL": ["Paket 5GB - Rp45.000", "Paket 10GB - Rp85.000", "Paket 20GB - Rp145.000"]
+        };
+
+        function deteksiProvider() {
+            const phone = document.getElementById("phone").value;
+            let provider = "";
+            
+            if (/^(0811|0812|0813|0821|0822|0851|0852|0853)/.test(phone)) {
+                provider = "Telkomsel";
+            } else if (/^(0814|0815|0816|0855|0856|0857|0858)/.test(phone)) {
+                provider = "Indosat";
+            } else if (/^(0817|0818|0819|0859|0877|0878)/.test(phone)) {
+                provider = "XL";
+            } else {
+                document.getElementById("providerInfo").classList.add("hidden");
+                return;
+            }
+
+            document.getElementById("providerName").textContent = `Provider: ${provider}`;
+            const packageSelect = document.getElementById("packages");
+            packageSelect.innerHTML = `<option value="" disabled selected>Pilih Paket</option>`;
+
+            paketData[provider].forEach((paket) => {
+                const option = document.createElement("option");
+                option.value = paket;
+                option.textContent = paket;
+                packageSelect.appendChild(option);
+            });
+
+            document.getElementById("providerInfo").classList.remove("hidden");
+        }
+
+        function beliPaket() {
+            const selectedPackage = document.getElementById("packages").value;
+            if (!selectedPackage) {
+                alert("Silakan pilih paket terlebih dahulu!");
+                return;
+            }
+            alert(`Anda berhasil membeli ${selectedPackage}!`);
+        }
+    </script>
+</body>
+</html>
